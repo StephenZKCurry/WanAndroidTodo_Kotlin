@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.zk.wanandroidtodo"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    allprojects {
+        repositories {
+            maven { url "https://jitpack.io" }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // Android Support
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:design:$support_version"
+    implementation "com.android.support.constraint:constraint-layout:1.1.2"
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    // retrofit 2
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_converter_gson_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_adapter_rxjava2_version"
+    // RxJava 2
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxjava2_rxandroid_version"
+    // RxBinding
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rxbinding_version"
+    // 持久化 Cookie
+    implementation "com.github.franmontiel:PersistentCookieJar:$persistentcookiejar_version"
+    // 日志拦截器
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_logging_interceptor"
+    // RecyclerView适配器
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$baserecyclerviewadapterhelper_version"
+    // 圆角矩形控件背景
+    implementation 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'
+    //circle imageview
+    implementation "de.hdodenhof:circleimageview:$circleimageview_version"
+    // MD风格的Dialog
+    implementation "com.afollestad.material-dialogs:core:$material_dialogs_version"
+    // 文字动画
+    implementation "com.yanzhikai:TextPathView:$text_path_view_version"
+    // 时间选择控件
+    implementation("com.github.gzu-liyujiang.AndroidPicker:WheelPicker:$wheel_picker_vision") {
+        exclude group: 'com.android.support'
+    }
+}
